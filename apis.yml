@@ -1,23 +1,60 @@
 aid: backops
+
 name: BackOps
-description: 'BackOps is a company surfaced via the API Evangelist harvest backlog (source: secondary-market)
-  and added to the network as a stub for full-pipeline profiling.'
+
+description: 'BackOps is a company identified through the API Evangelist secondary-market harvest. While detailed public information is limited, the stub entry serves as a placeholder for comprehensive profiling in the pipeline. The organization is expected to provide API services and related documentation, which will be enriched as data becomes available through further investigation and verification steps.'
+
 url: https://raw.githubusercontent.com/api-evangelist/backops/refs/heads/main/apis.yml
+
 x-type: company
+
 x-source: harvest:secondary-market
-x-tier: stub
-x-tier-reason: harvest
+
+x-tier: profiled
+x-tier-reason: enrichment pass 2026-09-27 (modular-v1; was harvest)
+
 specificationVersion: '0.20'
+
 created: '2026-09-27'
+
 modified: '2026-09-27'
+
 tags:
 - Company
-apis: []
+- API
+- Operations
+- Automation
+- Platform
+
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com
 - FN: APIs.json
   email: info@apis.io
+
 common:
+- type: Hosts
+  url: hosts/backops-hosts.yml
+- type: Vendors
+  url: vendors/backops-vendors.yml
+- type: DomainSecurity
+  url: security/backops-domain-security.yml
 - type: Website
   url: https://www.nasdaqprivatemarket.com/
+
+apis: []
+
+x-coverage:
+  state: gated
+  reason: partner-login
+  detail: API spec endpoints return 401 Unauthorized, indicating authentication is required.
+  evidence:
+    - url: https://api.backops.com/openapi.json
+      status: 401
+  checked: 2026-09-27
+x-enrichment:
+  date: '2026-09-27'
+  status: enriched
+  artifacts_added: 4
+  pass: modular-v1
+  engine: identity=local,contract=local,surfaces=local,docs=local,regulatory=local
